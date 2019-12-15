@@ -7,7 +7,7 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      title: 'Flutter Demo',
+      title: 'Flutter Layout',
       theme: ThemeData(
         // This is the theme of your application.
         //
@@ -20,7 +20,7 @@ class MyApp extends StatelessWidget {
         // is not restarted.
         primarySwatch: Colors.blue,
       ),
-      home: MyHomePage(title: 'Flutter Demo Home Page'),
+      home: MyHomePage(title: 'Flutter Task 1 - First Layout'),
     );
   }
 }
@@ -44,17 +44,133 @@ class MyHomePage extends StatefulWidget {
 }
 
 class _MyHomePageState extends State<MyHomePage> {
-  int _counter = 0;
+  Widget imageView() {
+    var thisWidget = Row(
+      mainAxisSize: MainAxisSize.max,
+      mainAxisAlignment: MainAxisAlignment.center,
+      children: <Widget>[
+        Image.network(
+          'https://s3-us-west-2.amazonaws.com/melingoimages/Images/62470.jpg',
+          width: 411.1,
+          fit: BoxFit.cover,
+        ),
+      ],
+    );
+    return thisWidget;
+  }
 
-  void _incrementCounter() {
-    setState(() {
-      // This call to setState tells the Flutter framework that something has
-      // changed in this State, which causes it to rerun the build method below
-      // so that the display can reflect the updated values. If we changed
-      // _counter without calling setState(), then the build method would not be
-      // called again, and so nothing would appear to happen.
-      _counter++;
-    });
+  Widget tittlePlace() {
+    var thisWidget = Padding(
+      padding: const EdgeInsets.all(16.0),
+      child: Row(
+        mainAxisSize: MainAxisSize.max,
+        children: <Widget>[
+          Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: <Widget>[
+              Container(
+                margin: const EdgeInsets.symmetric(vertical: 10),
+                child: Text(
+                  'Oeschinen Lake Campground',
+                  style: TextStyle(fontWeight: FontWeight.bold, fontSize: 18),
+                ),
+              ),
+              Text(
+                'Kandersteg, Switzerland',
+                style: TextStyle(color: Colors.black38),
+              ),
+            ],
+          ),
+          Container(
+            margin: const EdgeInsets.only(left: 60.0),
+            child: Column(
+              children: <Widget>[
+                Row(
+                  children: <Widget>[
+                    Icon(
+                      Icons.star,
+                      color: Colors.red,
+                    ),
+                    Text('41'),
+                  ],
+                ),
+              ],
+            ),
+          ),
+        ],
+      ),
+    );
+    return thisWidget;
+  }
+
+  Widget optionButtons() {
+    var buttonColor = Colors.lightBlue;
+    var thisWidget = Padding(
+      padding: const EdgeInsets.symmetric(vertical: 24.0),
+      child: Row(
+        mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+        children: <Widget>[
+          Column(
+            children: <Widget>[
+              Icon(
+                Icons.phone,
+                color: buttonColor,
+              ),
+              Text(
+                'Call',
+                style: TextStyle(
+                  color: buttonColor,
+                ),
+              ),
+            ],
+          ),
+          Column(
+            children: <Widget>[
+              Icon(
+                Icons.near_me,
+                color: buttonColor,
+              ),
+              Text(
+                'Route',
+                style: TextStyle(
+                  color: buttonColor,
+                ),
+              ),
+            ],
+          ),
+          Column(
+            children: <Widget>[
+              Icon(
+                Icons.share,
+                color: buttonColor,
+              ),
+              Text(
+                'Share',
+                style: TextStyle(
+                  color: buttonColor,
+                ),
+              ),
+            ],
+          ),
+        ],
+      ),
+    );
+    return thisWidget;
+  }
+
+  Widget overview() {
+    var thisWidget = Container(
+      padding: const EdgeInsets.all(16),
+      child: Text(
+        'Lake Oeschinen lies at the foot of the Blüemlisalp in the Bernese '
+        'Alps. Situated 1,578 meters above sea level, it is one of the '
+        'larger Alpine Lakes. A gondola ride from Kandersteg, followed by a '
+        'half-hour walk through pastures and pine forest, leads you to the '
+        'lake, which warms to 20 degrees Celsius in the summer. Activities '
+        'enjoyed here include rowing, and riding the summer toboggan run.',
+      ),
+    );
+    return thisWidget;
   }
 
   @override
@@ -74,38 +190,15 @@ class _MyHomePageState extends State<MyHomePage> {
       body: Center(
         // Center is a layout widget. It takes a single child and positions it
         // in the middle of the parent.
-        child: Column(
-          // Column is also a layout widget. It takes a list of children and
-          // arranges them vertically. By default, it sizes itself to fit its
-          // children horizontally, and tries to be as tall as its parent.
-          //
-          // Invoke "debug painting" (press "p" in the console, choose the
-          // "Toggle Debug Paint" action from the Flutter Inspector in Android
-          // Studio, or the "Toggle Debug Paint" command in Visual Studio Code)
-          // to see the wireframe for each widget.
-          //
-          // Column has various properties to control how it sizes itself and
-          // how it positions its children. Here we use mainAxisAlignment to
-          // center the children vertically; the main axis here is the vertical
-          // axis because Columns are vertical (the cross axis would be
-          // horizontal).
-          mainAxisAlignment: MainAxisAlignment.center,
+        child: ListView(
           children: <Widget>[
-            Text(
-              'You have pushed the button this many times:',
-            ),
-            Text(
-              '$_counter',
-              style: Theme.of(context).textTheme.display1,
-            ),
+            imageView(),
+            tittlePlace(),
+            optionButtons(),
+            overview(),
           ],
         ),
       ),
-      floatingActionButton: FloatingActionButton(
-        onPressed: _incrementCounter,
-        tooltip: 'Increment',
-        child: Icon(Icons.add),
-      ), // This trailing comma makes auto-formatting nicer for build methods.
     );
   }
 }
