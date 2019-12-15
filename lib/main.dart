@@ -45,7 +45,7 @@ class MyHomePage extends StatefulWidget {
 
 class _MyHomePageState extends State<MyHomePage> {
   Widget imageView() {
-    var thisView = Row(
+    var thisWidget = Row(
       mainAxisSize: MainAxisSize.max,
       mainAxisAlignment: MainAxisAlignment.center,
       children: <Widget>[
@@ -56,11 +56,11 @@ class _MyHomePageState extends State<MyHomePage> {
         ),
       ],
     );
-    return thisView;
+    return thisWidget;
   }
 
   Widget tittlePlace() {
-    var thisView = Padding(
+    var thisWidget = Padding(
       padding: const EdgeInsets.all(16.0),
       child: Row(
         mainAxisSize: MainAxisSize.max,
@@ -68,9 +68,12 @@ class _MyHomePageState extends State<MyHomePage> {
           Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: <Widget>[
-              Text(
-                'Oeschinen Lake Campground',
-                style: TextStyle(fontWeight: FontWeight.bold),
+              Container(
+                margin: const EdgeInsets.symmetric(vertical: 10),
+                child: Text(
+                  'Oeschinen Lake Campground',
+                  style: TextStyle(fontWeight: FontWeight.bold, fontSize: 18),
+                ),
               ),
               Text(
                 'Kandersteg, Switzerland',
@@ -79,7 +82,7 @@ class _MyHomePageState extends State<MyHomePage> {
             ],
           ),
           Container(
-            margin: const EdgeInsets.only(left: 120.0),
+            margin: const EdgeInsets.only(left: 60.0),
             child: Column(
               children: <Widget>[
                 Row(
@@ -97,12 +100,12 @@ class _MyHomePageState extends State<MyHomePage> {
         ],
       ),
     );
-    return thisView;
+    return thisWidget;
   }
 
   Widget optionButtons() {
     var buttonColor = Colors.lightBlue;
-    var thisView = Padding(
+    var thisWidget = Padding(
       padding: const EdgeInsets.symmetric(vertical: 24.0),
       child: Row(
         mainAxisAlignment: MainAxisAlignment.spaceEvenly,
@@ -152,22 +155,22 @@ class _MyHomePageState extends State<MyHomePage> {
         ],
       ),
     );
-    return thisView;
+    return thisWidget;
   }
 
   Widget overview() {
-    var thisView = Container(
+    var thisWidget = Container(
       padding: const EdgeInsets.all(16),
       child: Text(
         'Lake Oeschinen lies at the foot of the Blüemlisalp in the Bernese '
-            'Alps. Situated 1,578 meters above sea level, it is one of the '
-            'larger Alpine Lakes. A gondola ride from Kandersteg, followed by a '
-            'half-hour walk through pastures and pine forest, leads you to the '
-            'lake, which warms to 20 degrees Celsius in the summer. Activities '
-            'enjoyed here include rowing, and riding the summer toboggan run.',
+        'Alps. Situated 1,578 meters above sea level, it is one of the '
+        'larger Alpine Lakes. A gondola ride from Kandersteg, followed by a '
+        'half-hour walk through pastures and pine forest, leads you to the '
+        'lake, which warms to 20 degrees Celsius in the summer. Activities '
+        'enjoyed here include rowing, and riding the summer toboggan run.',
       ),
     );
-    return thisView;
+    return thisWidget;
   }
 
   @override
